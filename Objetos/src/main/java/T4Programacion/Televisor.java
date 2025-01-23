@@ -49,4 +49,9 @@ public class Televisor {
         }
     }
 
+    @Override
+    public String toString(){
+        return "Televisor : [ canal="+canal+", volumen="+volumen+" ]";
+    }
+
 }

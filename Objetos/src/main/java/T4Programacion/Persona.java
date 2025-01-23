@@ -96,6 +96,10 @@ public class Persona {
 
     }
 
+    @Override
+    public String toString(){
+        return "Persona : [ nombre="+nombre+", apellido="+apellido+", dni="+dni+", secso="+secso+", edad="+edad+", ciudad="+ciudad+", profesion="+profesion+" ]";
+    }
 
 
 
