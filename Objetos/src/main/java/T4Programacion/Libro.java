@@ -23,6 +23,7 @@ public class Libro {
         this.id=calcularID();
         estudiantePrestado=null;
         this.editorial=editorial;
+        editorial.meterLibro(this);
 
     }
 
@@ -32,17 +33,17 @@ public class Libro {
 
     public Prestamo prestar(Estudiante estudiante){
 
-        if(disponible && estudiante.getLibroPrestado()==null) {
+        if(disponible && !estudiante.getLibrosPrestados().contains(this)) {
             disponible = false;
             System.out.println("El libro " + getTitulo() + " ha sido prestado con éxito a " + estudiante.getName());
             librosDisponibles--;
             estudiantePrestado = estudiante;
-            estudiante.setLibroPrestado(this);
+            estudiante.meterLibro(this);
             Prestamo prestamo = new Prestamo(estudiante,this);
             System.out.println("Nuevo préstamo creado: " + prestamo);
             return prestamo;
-        } else if (estudiante.getLibroPrestado()!=null) {
-            System.out.println("El estudiante " +  estudiante.getName() + " ya tiene un libro prestado");
+        } else if (estudiante.getLibrosPrestados().contains(this)) {
+            System.out.println("El estudiante " +  estudiante.getName() + " ya tiene ese libro prestado");
         }else{
             System.out.println("El libro " + getTitulo() + " no se puede prestar.");
         }
@@ -58,7 +59,7 @@ public class Libro {
             System.err.println("El libro " + getTitulo() + " ha sido devuelto con éxito por " + estudiantePrestado.getName());
             librosDisponibles++;
             estudiantePrestado=null;
-            estudiante.setLibroPrestado(null);
+            estudiante.quitarLibro(this);
         }else{
             System.err.println("El libro " + getTitulo() + " no se puede devolver. Está disponible.");
         }
@@ -128,11 +129,11 @@ public class Libro {
 
     @Override
     public String toString(){
-        return "Libro: [titulo:" + getTitulo() + " //autor:" + getAutor() + " //id:" + getId() + " //disponible:" + getDisponible() + " //estudiantePrestado:" + getEstudiantePrestado() + " //editorial:" + getEditorial() + "]";
+        if (estudiantePrestado != null){
+            return "Libro : [ titulo=" + getTitulo() + " autor=" + getAutor() + " id=" + getId() + " disponible=" + getDisponible() + " estudiante=" + estudiantePrestado.getName() + " editorial=" + editorial.getNombre() + " ]";
+        }else{
+            return "Libro : [ titulo=" + getTitulo() + " autor=" + getAutor() + " id=" + getId() + " disponible=" + getDisponible() + " editorial=" + editorial.getNombre() + " ]";
+        }
     }
-
-
-
-
 
 }

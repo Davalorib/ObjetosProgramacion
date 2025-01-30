@@ -22,10 +22,12 @@ public class Amumu2 {
 
         Libro l1 = new Libro("solo leveling","mipadre",ed1);
         System.out.println(l1);
+        System.out.println(ed1);
         System.out.println();
 
         Libro l2 = new Libro("la biblia","yisus", ed1);
         System.out.println(l2);
+        System.out.println(ed1);
         System.out.println(Libro.getLibrosDisponibles());
         System.out.println();
 
