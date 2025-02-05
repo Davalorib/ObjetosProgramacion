@@ -20,29 +20,32 @@ public class Cadena {
         return nombre;
     }
 
-    public void agregarPrograma(String nombre, Cadena cadena, String director) {
-        Programa programa = new Programa(nombre,cadena, director);
-        listaProgramas.add(programa);
+    public void setListaProgramas(ArrayList<Programa> listaProgramas) {
+        this.listaProgramas = listaProgramas;
     }
 
-//    public void mostrarPrograma() {
-//
-//        for(Programa p:listaProgramas) {
-//            System.out.println("- "+p.getNombre()+" ("+e.getCargo()+")");
-//        }
-//    }
-//
-//    public void eliminarEmpleado(String nombre) {
-//        for (Empleado e:listaEmpleados){
-//            if (e.getNombre().equals(nombre)){
-//                listaEmpleados.remove(e);
-//                break;
-//            }
-//        }
-//    }
+    public ArrayList<Programa> getListaProgramas() {
+        return listaProgramas;
+    }
+
+    public void agregarPrograma(Programa programa) {
+        if (!listaProgramas.contains(programa)) {
+            listaProgramas.add(programa);
+        }
+    }
+
+    public void quitarPrograma(Programa programa) {
+        this.listaProgramas.remove(programa);
+    }
+
+    public void mostrarPrograma() {
+        for(Programa p:listaProgramas) {
+            System.out.println("- "+p.getNombre()+" (Director:"+p.getDirector().getNombre()+")");
+        }
+    }
 
     @Override
     public String toString() {
-        return "Cadena [nombre='"+nombre+"', listaProgramas="+listaProgramas+"]";
+        return "Cadena [nombre='"+nombre+"', listaProgramas="+listaProgramas.size()+"]";
     }
 }

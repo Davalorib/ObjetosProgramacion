@@ -11,12 +11,22 @@ public class Empleado {
     private Empleado director;
 
     public Empleado(String nombre){
+        this(nombre, "director", null);
+    }
+
+    public Empleado(String nombre, String cargo, Empleado director){
         this.nombre=nombre;
-        cargo="director";
+        setCargo(cargo);
+        //
+        if (cargo.equals("director")) {
+            this.director=null;
+        } else {
+            this.director=director;
+        }
+        //
         cantidadID++;
         this.id=calcularID();
     }
-
 
     private String calcularID() {
         return ID_DEF + String.format("%03d",cantidadID);
@@ -27,7 +37,11 @@ public class Empleado {
     }
 
     public void setCargo(String cargo) {
-        this.cargo = cargo;
+        if (cargo.equals("director") || cargo.equals("técnico") || cargo.equals("presentador") || cargo.equals("colaborador")) {
+            this.cargo = cargo;
+        } else {
+            this.cargo = "pte";
+        }
     }
 
     public String getNombre() {
@@ -36,6 +50,10 @@ public class Empleado {
 
     public String getCargo() {
         return cargo;
+    }
+
+    public Empleado getDirector() {
+        return director;
     }
 
     @Override

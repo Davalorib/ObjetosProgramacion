@@ -12,7 +12,7 @@ public class Invitado {
         this.nombre=nombre;
         this.profesion=profesion;
         this.temporada=temporada;
-        fecha_visita = LocalDate.now();
+        this.fecha_visita = LocalDate.now();
     }
 
     public LocalDate getFecha_visita() {
@@ -43,4 +43,13 @@ public class Invitado {
         return temporada;
     }
 
+    @Override
+    public String toString() {
+        return "Invitado{" +
+                "nombre='" + nombre + '\'' +
+                ", profesion='" + profesion + '\'' +
+                ", fecha_visita=" + fecha_visita +
+                ", temporada=" + temporada +
+                '}';
+    }
 }
