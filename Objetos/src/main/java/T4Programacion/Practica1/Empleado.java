@@ -4,6 +4,7 @@ public class Empleado {
 
     public static int cantidadID = 0;
     public static final String ID_DEF = "EP";
+    public static final String[] cargos = {"director","técnico","presentador","colaborador"};
 
     private String id;
     private String nombre;
