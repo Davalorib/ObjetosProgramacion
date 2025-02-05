@@ -1,0 +1,50 @@
+
+@startuml
+
+class Estudiante {
+    - String name
+    - String curso
+    - int nia
+    - String email
+    - ArrayList<Libro> librosPrestados
+    + Estudiante(String, String, String)
+    + Estudiante(String)
+    + int total()
+    + void meterLibro(Libro)
+    + void quitarLibro(Libro)
+}
+
+class Libro {
+    - String titulo
+    - String autor
+    - String id
+    - boolean disponible
+    - Estudiante estudiantePrestado
+    - Editorial editorial
+    + Libro(String, String, Editorial)
+    + Prestamo prestar(Estudiante)
+    + void devolver(Estudiante)
+}
+
+class Editorial {
+    - String name
+    - String pais
+    - ArrayList<Libro> librosPublicados
+    + Editorial(String, String)
+    + void meterLibro(Libro)
+    + void quitarLibro(Libro)
+}
+
+class Prestamo {
+    - Estudiante est
+    - Libro libro
+    - LocalDate hoy
+    + Prestamo(Estudiante, Libro)
+}
+
+Estudiante "*" o-- "*" Libro : presta
+Editorial "1" o-- "*" Libro : publica
+Prestamo "1" o-- "1" Estudiante : realiza
+Prestamo "1" o-- "1" Libro : sobre
+
+@enduml

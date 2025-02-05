@@ -46,6 +46,6 @@ public class Cadena {
 
     @Override
     public String toString() {
-        return "Cadena [nombre='"+nombre+"', listaProgramas="+listaProgramas.size()+"]";
+        return "Cadena [nombre='"+nombre+"', listaProgramas="+listaProgramas+"]";
     }
 }

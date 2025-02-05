@@ -67,4 +67,22 @@ public class Casa {
             }
         }
     }
+
+    public void calcularHabitacionMasConsumo(){
+
+        double aux = 0;
+        double aux_ant = 0;
+        Habitacion mayor = habitaciones.get(0);
+
+        for (Habitacion hab : habitaciones){
+            aux = hab.calcularConsumoHabitacion();
+            if(aux>aux_ant){
+                mayor = hab;
+            }
+        }
+
+        System.out.println("La habitación que más consume es: " +  mayor.getNombre() + " con " + mayor.calcularConsumoHabitacion() + "kWh");
+
+    }
+
 }

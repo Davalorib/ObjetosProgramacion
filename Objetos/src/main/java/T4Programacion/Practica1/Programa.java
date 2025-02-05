@@ -111,7 +111,7 @@ public class Programa {
     public String toString() {
         return "Programa{" +
                 "nombre='" + nombre + '\'' +
-                ", cadena=" + cadena +
+                ", cadena=" + cadena.getNombre() +
                 ", director=" + director +
                 ", temporadas=" + temporadas +
                 ", listaEmpleados=" + listaEmpleados +

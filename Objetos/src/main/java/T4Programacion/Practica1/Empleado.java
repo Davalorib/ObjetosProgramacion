@@ -17,13 +17,7 @@ public class Empleado {
     public Empleado(String nombre, String cargo, Empleado director){
         this.nombre=nombre;
         setCargo(cargo);
-        //
-        if (cargo.equals("director")) {
-            this.director=null;
-        } else {
-            this.director=director;
-        }
-        //
+        setDirector(director);
         cantidadID++;
         this.id=calcularID();
     }
@@ -50,6 +44,14 @@ public class Empleado {
 
     public String getCargo() {
         return cargo;
+    }
+
+    public void setDirector(Empleado director) {
+        if (this.cargo.equals("director")) {
+            this.director=null;
+        } else {
+            this.director=director;
+        }
     }
 
     public Empleado getDirector() {
