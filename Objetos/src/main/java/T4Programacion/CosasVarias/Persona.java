@@ -1,6 +1,4 @@
-package T4Programacion;
-
-import javax.xml.parsers.SAXParser;
+package T4Programacion.CosasVarias;
 
 public class Persona {
 

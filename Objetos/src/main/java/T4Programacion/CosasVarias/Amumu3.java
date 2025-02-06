@@ -1,4 +1,4 @@
-package T4Programacion;
+package T4Programacion.CosasVarias;
 
 public class Amumu3 {
     public static void main(String[] args) {

@@ -1,6 +1,5 @@
-package T4Programacion;
+package T4Programacion.CosasVarias;
 
-import java.security.PublicKey;
 import java.util.Scanner;
 
 public class Amumu {

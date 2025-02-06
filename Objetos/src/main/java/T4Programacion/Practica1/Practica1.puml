@@ -1,0 +1,116 @@
+@startuml
+
+' Definición de la clase Programa
+class Programa {
+  - String nombre
+  - Cadena cadena
+  - int temporadas
+  - ArrayList<Empleado> listaEmpleados
+  - ArrayList<Invitado> listaInvitados
+  - Empleado director
+  - int cont
+  - LocalDate fecha1
+  + Programa(String, Cadena, String)
+  + agregarEmpleado(String, String, Empleado)
+  + mostrarEmpleados()
+  + eliminarEmpleado(String)
+  + agregarInvitado(String, String, int)
+  + mostrarInvitado()
+  + eliminarInvitado(String)
+  + getDirector() : Empleado
+  + setNombre(String)
+  + getNombre() : String
+  + setCadena(Cadena)
+  + getCadena() : Cadena
+  + setTemporadas(int)
+  + getTemporadas() : int
+  + getListaInvitados() : ArrayList<Invitado>
+  + getListaEmpleados() : ArrayList<Empleado>
+  + invitadosTemporada(int)
+  + vecesInvitado(String)
+  + rastrearInvitado(String)
+  + buscarInvitado(String) : boolean
+  + invitadoAntes(String)
+  + toString() : String
+}
+
+' Definición de la clase Cadena
+class Cadena {
+  - String nombre
+  - ArrayList<Programa> listaProgramas
+  + Cadena(String)
+  + setNombre(String)
+  + getNombre() : String
+  + getListaProgramas() : ArrayList<Programa>
+  + agregarPrograma(Programa)
+  + quitarPrograma(Programa)
+  + mostrarPrograma()
+  + toString() : String
+}
+
+' Definición de la clase Empleado
+class Empleado {
+  - String id
+  - String nombre
+  - String cargo
+  - Empleado director
+  - boolean hola
+  + static int cantidadID
+  + static final String ID_DEF
+  + static final String[] CARGOS
+  + static final String CARGO_DEF
+  + Empleado(String)
+  + Empleado(String, String, Empleado)
+  - calcularID() : String
+  + setCargo(String)
+  + setNombre(String)
+  + getNombre() : String
+  + getCargo() : String
+  + setDirector(Empleado)
+  + getDirector() : Empleado
+  + toString() : String
+}
+
+' Definición de la clase Invitado
+class Invitado {
+  - Scanner ent
+  - String nombre
+  - String profesion
+  - int temporada
+  - LocalDate fecha_visita
+  - String fecha
+  - String[] fecha2
+  - int dia
+  - int mes
+  - int ano
+  - boolean formato
+  - ArrayList<LocalDate> fechas
+  + Invitado(String, String, int)
+  + setFecha_visita()
+  + getFechas() : ArrayList<LocalDate>
+  + getFecha_visita() : LocalDate
+  + setNombre(String)
+  + setProfesion(String)
+  + setTemporada(int)
+  + getNombre() : String
+  + getProfesion() : String
+  + getTemporada() : int
+  + toString() : String
+}
+
+' Relaciones
+
+' Programa contiene una lista de Empleados y de Invitados
+Programa "1" *-- "*" Empleado : listaEmpleados
+Programa "1" *-- "*" Invitado : listaInvitados
+
+' Programa tiene un director (Empleado)
+Programa "1" *-- "*" Empleado : director
+
+' Cadena contiene una lista de Programas
+Cadena "1" *-- "*" Programa : listaProgramas
+
+' Empleado puede tener un director (relación recursiva)
+Empleado "*" --- "1" Empleado : director
+
+@enduml
