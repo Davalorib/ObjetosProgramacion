@@ -4,10 +4,12 @@ public class AppInstitutos {
 
     public static void main(String[] args) {
         Instituto instituto = new Instituto("IES MUTXAMEL");
+        Instituto instituto2 = new Instituto(null);
         //crear cursos
         Curso cursoJava = new Curso("Java", 100);
         Curso cursoPython = new Curso("Python", 70);
         instituto.agregarCurso(cursoJava);
+        instituto.agregarCurso(cursoPython);
         instituto.agregarCurso(cursoPython);
 
         //crear estudiantes
@@ -31,6 +33,11 @@ public class AppInstitutos {
         //mostrar estudiantes
         System.out.println("Estudiantes registrados:");
         System.out.println(instituto.getListaEstudiantes());
+        System.out.println();
+        System.out.println(instituto);
+        System.out.println(instituto2);
+        System.out.println();
+
     }
 
 }

@@ -1,25 +1,39 @@
 package T4Programacion.Practica3;
 
+import T4Programacion.Practica1.Empleado;
 import lombok.*;
 
 import java.util.ArrayList;
 
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Getter @Setter
 @ToString
 public class Instituto {
 
     private final String NOMBRE;
     private String poblacion;
-    private ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
-    private ArrayList<Curso> listaCursos = new ArrayList<>();
+    private ArrayList<Estudiante> listaEstudiantes;
+    private ArrayList<Curso> listaCursos;
 
+    public Instituto(String NOMBRE){
+        if (NOMBRE==null) {
+            this.NOMBRE = "Instituto sin nombre";
+        } else {
+            this.NOMBRE = NOMBRE;
+        }
+        listaEstudiantes = new ArrayList<>();
+        listaCursos = new ArrayList<>();
+    }
 
     public void agregarCurso(Curso curso){
         if (curso == null){
             System.out.println("No se puede agregar un curso nulo");
             return;
+        }
+        for (Curso c:listaCursos){
+            if (listaCursos.contains(curso)){
+                return;
+            }
         }
         listaCursos.add(curso);
     }
@@ -31,5 +45,6 @@ public class Instituto {
         }
         listaEstudiantes.add(estudiante);
     }
+
 
 }
