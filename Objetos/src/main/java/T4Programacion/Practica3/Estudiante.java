@@ -1,13 +1,12 @@
 package T4Programacion.Practica3;
 
-
 import lombok.*;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Getter @Setter
 @ToString
-public class Estudiante {
+public class Estudiante { //el objeto curso creado toodo con Lombok
 
     @NonNull
     private String nombre;

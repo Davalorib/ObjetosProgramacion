@@ -8,9 +8,13 @@ public class AppInstitutos {
         //crear cursos
         Curso cursoJava = new Curso("Java", 100);
         Curso cursoPython = new Curso("Python", 70);
+        Curso cursoPython2 = new Curso("Python", 70);
+
+        System.out.println();
         instituto.agregarCurso(cursoJava);
         instituto.agregarCurso(cursoPython);
-        instituto.agregarCurso(cursoPython);
+        instituto.agregarCurso(cursoPython2);
+        System.out.println();
 
         //crear estudiantes
         try {
