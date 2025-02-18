@@ -126,6 +126,10 @@ public class Paciente {
         this.altura = altura;
     }
 
+    public void mostrar(Paciente paciente){
+        System.out.println("Paciente : [");
+    }
+
     @Override
     public String toString(){
         return "Paciente : [ nombre="+nombre+", edad="+edad+", genero="+secso+", peso="+peso+", altura="+altura+" ]";
