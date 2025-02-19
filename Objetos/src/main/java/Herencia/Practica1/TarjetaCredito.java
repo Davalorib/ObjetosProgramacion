@@ -5,6 +5,8 @@ import lombok.Getter;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static Herencia.Practica1.Tienda.llave;
+
 @Getter
 public class TarjetaCredito extends MetodoPago{
 
@@ -16,37 +18,49 @@ public class TarjetaCredito extends MetodoPago{
     private String nro_tarjeta;
     private String tipo;
 
+    public TarjetaCredito(String nro_tarjeta, String tipo) {
+        this.nro_tarjeta = nro_tarjeta;
+        this.tipo = tipo.toUpperCase();
+    }
+
     public TarjetaCredito() {
-        String a = preguntarTarjeta();
-        String b = preguntarTipo();
-        if(validarTarjeta(a,b)){
-            this.nro_tarjeta = a;
-            this.tipo = b;
+        TarjetaCredito prueba = new TarjetaCredito(preguntarTarjeta(),preguntarTipo());
+        if(validarTarjeta(prueba.getNro_tarjeta(),prueba.getTipo())){
+            this.nro_tarjeta = prueba.getNro_tarjeta();
+            this.tipo = prueba.getTipo();
+            llave = true;
         } else {
-            System.out.println("DATOS ERRÓNEOS...");
+            System.err.println("ERROR. DATOS ERRÓNEOS...");
         }
     }
 
     public boolean validarTarjeta(String num, String type){
+        System.out.println("Validando tarjeta...");
         if (num.length()!=TARJETA_MAX){
+            System.out.println("ERROR... La tarjeta debe tener "+TARJETA_MAX+" dígitos");
+            return false;
+        } else if (!num.matches("\\d+")) {
+            System.out.println("ERROR... La tarjeta solo puede contener números");
             return false;
         } else if (!Arrays.asList(TIPO_DEF).contains(type)) {
+            System.out.println("ERROR... La tarjeta solo puede ser [VISA, MASTERCARD, MAESTRO]");
             return false;
         }
+        System.out.println("Tarjeta válida");
         return true;
     }
 
     public void procesarPago(double importe) {
-        System.out.println( "Procesando pago de ["+importe+"]€ con tarjeta de crédito "+tipo);
+        System.out.println("Procesando pago de ["+importe+"]€ con tarjeta de crédito "+tipo);
     }
 
     public String preguntarTarjeta(){
-        System.out.println("Introduzca su número de tarjeta: ");
+        System.out.println("Introduce el número de tarjeta: ");
         return ent.next();
     }
 
     public String preguntarTipo(){
-        System.out.println("Introduzca su tipo de tarjeta [VISA, MASTERCARD, MAESTRO]: ");
+        System.out.println("Introduce el tipo de tarjeta [VISA, MASTERCARD, MAESTRO]: ");
         return ent.next();
     }
 }
