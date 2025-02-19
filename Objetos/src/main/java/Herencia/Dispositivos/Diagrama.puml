@@ -1,0 +1,37 @@
+@startuml
+
+package "Herencia.Dispositivos" {
+
+    interface ControlRemoto {
+        +void sincronizar()
+    }
+
+    abstract class Dispositivo {
+        - String nombre
+        - boolean estado
+        + Dispositivo(String nombre)
+        + void encender()
+        + void apagar()
+        + void setEstado(boolean estado)
+        + void mostrarEstado()
+    }
+
+    class Televisor extends Dispositivo implements ControlRemoto {
+        + Televisor(String nombre)
+        + void sincronizar()
+        + void encender()
+    }
+
+    class Alexa extends Dispositivo {
+        + Alexa(String nombre)
+        + void encender()
+    }
+
+    class AireAcondicionado extends Dispositivo implements ControlRemoto {
+        + AireAcondicionado(String nombre)
+        + void sincronizar()
+        + void encender()
+    }
+}
+
+@enduml
