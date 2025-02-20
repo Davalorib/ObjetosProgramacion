@@ -1,0 +1,55 @@
+@startuml
+package "Herencia.Practica1" {
+
+  abstract class MetodoPago {
+      {abstract} +procesarPago(importe: double)
+  }
+
+  class Tienda {
+      - ent: Scanner
+      + iniciarPago()
+      + realizarPago(metodo: MetodoPago, importe: double)
+  }
+
+  class PayPal {
+      + FORMATO: String
+      + SALDO_DEF: double
+      - correo: String
+      - saldo: double
+      + PayPal(correo: String, saldo: double)
+      + ponerSaldo(saldo: double)
+      + validarPayPal(): boolean
+      + validarSaldo(importe: double): boolean
+      + procesarPago(importe: double)
+  }
+  PayPal --|> MetodoPago
+
+  class Bizum {
+      + TELEFONO_MAX: int
+      + PIN_MAX: int
+      - random: Random
+      - ent: Scanner
+      - telefono: String
+      - pin: int
+      + Bizum(telefono: String)
+      + generarPin()
+      + preguntarPin(pin: int): boolean
+      + validarBizum(): boolean
+      + procesarPago(importe: double)
+  }
+  Bizum --|> MetodoPago
+
+  class TarjetaCredito {
+      + TIPO_DEF: String[]
+      + TARJETA_MAX: int
+      - nro_tarjeta: String
+      - tipo: String
+      + TarjetaCredito(nro_tarjeta: String, tipo: String)
+      + validarTarjeta(): boolean
+      + procesarPago(importe: double)
+  }
+  TarjetaCredito --|> MetodoPago
+
+  Tienda ..> MetodoPago : uses
+}
+@enduml
