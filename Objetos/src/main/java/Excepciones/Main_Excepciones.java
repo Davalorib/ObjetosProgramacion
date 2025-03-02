@@ -6,7 +6,7 @@ public class Main_Excepciones {
         int nivel = 150;
 
         if (nivel>100){
-            throw new NvlMaxException();
+            throw new NvlMaxException("anormal");
         }
     }
 }
